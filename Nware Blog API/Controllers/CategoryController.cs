@@ -10,10 +10,9 @@ using Nware_Blog_API.Models;
 
 namespace Nware_Blog_API.Controllers
 { 
-    public class ValuesController : ApiController
+    public class CategoryController : ApiController
     {
-        // GET api/values
-        public List<Category> Get()
+        public List<CategoryModel> Get()
         {
             MySqlConnection conn = WebApiConfig.sqlConnection();
 
@@ -21,7 +20,7 @@ namespace Nware_Blog_API.Controllers
 
             query.CommandText = "SELECT id,title FROM category";
 
-            var categories = new List<Category>();
+            var categories = new List<CategoryModel>();
 
             try
             {
@@ -36,14 +35,14 @@ namespace Nware_Blog_API.Controllers
 
             while (fetchQuery.Read())
             {
-                categories.Add(new Category(Convert.ToInt32(fetchQuery["id"]),fetchQuery["title"].ToString()));
+                categories.Add(new CategoryModel(Convert.ToInt32(fetchQuery["id"]),fetchQuery["title"].ToString()));
             }
 
             return categories;
         }
 
         // GET api/values/5
-        public List<Category> Get(int id)
+        public List<CategoryModel> Get(int id)
         {
             MySqlConnection conn = WebApiConfig.sqlConnection();
 
@@ -53,7 +52,7 @@ namespace Nware_Blog_API.Controllers
 
             query.Parameters.AddWithValue("@id", id);
 
-            var categories = new List<Category>();
+            var categories = new List<CategoryModel>();
 
             try
             {
@@ -61,14 +60,14 @@ namespace Nware_Blog_API.Controllers
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                
+                throw ex;
             }
 
             MySqlDataReader fetchQuery = query.ExecuteReader();
 
             while (fetchQuery.Read())
             {
-                categories.Add(new Category(Convert.ToInt32(fetchQuery["id"]) ,fetchQuery["title"].ToString()));
+                categories.Add(new CategoryModel(Convert.ToInt32(fetchQuery["id"]) ,fetchQuery["title"].ToString()));
             }
 
             return categories;
@@ -82,12 +81,6 @@ namespace Nware_Blog_API.Controllers
         // PUT api/values/5
         public void Put(int id, [FromBody] string value)
         {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-
         }
     }
 }

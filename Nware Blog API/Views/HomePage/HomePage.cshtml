@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Nware_Blog_API.Models.CategoryModel>
+
+<div class="col-md-12">
+    <div class="col-md-6">
+        Categories
+    </div>
+    <div class="col-md-6">
+        <button>@Html.ActionLink("Add", "AddCategory", "ManageCategory", new { area = "" }, null)</button>
+    </div>
+
+    <table class="table">
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(category.title.ToString(), "EditCategory", "ManageCategory", new { id = category.id }, new { id = category.id })
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+<div class="col-md-12">
+    <div class="col-md-6">
+        Posts
+    </div>
+    <div class="col-md-6">
+        <button>@Html.ActionLink("Add", "AddPost", "ManagePost", new { area = "" }, null)</button>
+    </div>
+
+    <table class="table">
+        
+    </table>
+</div>
