@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,8 @@ namespace Nware_Blog_API.Models
         public int id { get; set; }
         public string title { get; set; }
         public DateTime publicationDate { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public string content { get; set; }
         public int categoryId { get; set; }
 
@@ -20,6 +23,10 @@ namespace Nware_Blog_API.Models
             this.publicationDate = publicationDate;
             this.content = content;
             this.categoryId = categoryId;
+        }
+
+        public PostModel()
+        {
         }
     }
 }

@@ -160,9 +160,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ManageCategoryController.cs" />
-    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\ManagePostController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,6 +224,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ManageCategory\AddCategory.cshtml" />
     <Content Include="Views\ManageCategory\EditCategory.cshtml" />
+    <Content Include="Views\ManagePost\AddPost.cshtml" />
+    <Content Include="Views\ManagePost\EditPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

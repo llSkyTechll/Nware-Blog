@@ -22,9 +22,9 @@ namespace Nware_Blog_API.Controllers
 
             HomePageLists homePageLists = new HomePageLists(categories, posts);
 
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Blog";
 
-            return View(categories);
+            return View(homePageLists);
         }
 
         public List<CategoryModel> GetAllCategories()
@@ -33,7 +33,7 @@ namespace Nware_Blog_API.Controllers
 
             MySqlCommand query = conn.CreateCommand();
 
-            query.CommandText = "SELECT id,title FROM category";
+            query.CommandText = "SELECT id,title FROM category ORDER BY title";
 
             var categories = new List<CategoryModel>();
 
@@ -62,7 +62,7 @@ namespace Nware_Blog_API.Controllers
 
             MySqlCommand query = conn.CreateCommand();
 
-            query.CommandText = "SELECT id,title,publicationDate,content,categoryId FROM post";
+            query.CommandText = "SELECT id,title,publicationDate,content,categoryId FROM post ORDER BY title";
 
             var posts = new List<PostModel>();
 
